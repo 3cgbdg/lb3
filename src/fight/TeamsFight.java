@@ -16,7 +16,11 @@ public class TeamsFight extends Fight{
         int randIdxTeam1 = 0;
         int randIdxTeam2 = 0;
         int turn = 0;
+//        if some of the teams are dead -fight ends
+
         while(team1.isAlive() && team2.isAlive()){
+//            turn 0 - team 1 , turn 0 team 2
+
             turn = (int)(Math.random()*2);
              randIdxTeam1 = (int)(Math.random()* team1.getDroids().size());
              randIdxTeam2 = (int)(Math.random()* team2.getDroids().size());
@@ -27,6 +31,8 @@ public class TeamsFight extends Fight{
                 while(!activeDroid1.isAlive()){
                     activeDroid1= team1.getDroids().get((int)(Math.random()* team1.getDroids().size()));
                 }
+                //checking interfaces
+
                 if(activeDroid1 instanceof Healer healer){
                     healer.heal();
 
@@ -39,6 +45,8 @@ public class TeamsFight extends Fight{
                 while(!activeDroid2.isAlive()){
                     activeDroid2= team2.getDroids().get((int)(Math.random()* team2.getDroids().size()));
                 }
+                //checking interfaces
+                
                 if(activeDroid2 instanceof Healer healer){
                     healer.heal();
 

@@ -2,13 +2,14 @@ package droids;
 
 import battlelog.BattleLog;
 import interfaces.Fighter;
-
+//fighter interface + abstract droid
 public class SniperDroid extends Droid implements Fighter {
     final private float  accuracy = .9f;
    public  SniperDroid(String name){
         super(name,"Critical shot",450f,125f,40f);
     };
     @Override
+        //method for using ability
     void useAbility() {
         double randomNum = Math.random();
         if(randomNum>= 0.90f){
@@ -23,6 +24,7 @@ public class SniperDroid extends Droid implements Fighter {
         this.useAbility();
         boolean isShot = Math.random() <accuracy;
         if(isShot){
+//            less <0 than 0
             health=Math.max(0, health-droid.defendDamage);
             droid.health =Math.max(0, droid.health-damage);
             BattleLog.add(String.format("[%s: -%.2f  | %s: -%.2f]---REMAINED HP[%s:%.2f, %s:%.2f]  %s",

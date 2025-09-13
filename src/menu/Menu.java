@@ -5,9 +5,10 @@ import game.Game;
 
 import java.util.List;
 import java.util.Scanner;
-
+//menu class
 public class Menu {
     private static int choice ;
+   //method for showing menu for each iteration
     private static void showMenu() {
         System.out.println("\n" + "=".repeat(30));
         System.out.println("Menu:");
@@ -18,7 +19,7 @@ public class Menu {
         System.out.println("5. Get last fight logs from .txt file");
         System.out.println("6. Leave a Game");
     }
-
+//method for running menu
     public static void runMenu() throws InterruptedException {
         Scanner sc= new Scanner(System.in);
         while(choice != 6){
@@ -33,20 +34,24 @@ public class Menu {
                     break;
                 case 2:
                     final List<Droid> listOfDroids =  Game.getDroids();
+//                    if there are no droids added then return
                     if(listOfDroids.isEmpty()){
                         System.out.println("\nList is empty!");
                         break;
                     };
+//                    iterations for showing all the droids
                     for(Droid dr : listOfDroids){
                         System.out.printf("Droid \"%s\" health -- [%.2f]hp, ability -- %s, damage -- %.2f \n",dr.getName(),dr.getHealth(),dr.getAbilityName(),dr.getDamage());
                     }
                     break;
                 case 3:
+                    //if size <=1 next iteration
                     if(Game.getDroids().size()<=1)break;
                     Game.createTeams(1);
                     Game.startFight(1);
                     break;
                 case 4 :
+                    //if size <=1 next iteration
                     if(Game.getDroids().size()<=1)break;
                     Game.createTeams(2);
                     Game.startFight(2);

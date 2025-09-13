@@ -1,16 +1,17 @@
 package droids;
 
 import battlelog.BattleLog;
-
+//abstract class for Droids
 public abstract class Droid {
       final  String name ;
       String abilityName ;
       float health ;
     float damage;
     float defendDamage;
-    float reloadTime ;
+
      Integer teamIdx= null;
       boolean inTeam = false;
+//      getters
     public String getName (){
         return name;
     }
@@ -20,13 +21,23 @@ public abstract class Droid {
     public String getAbilityName(){
         return abilityName;
     }
+    public float getDamage (){
+        return damage;
+    }
+
+    //checkers
      public boolean isInTeam (){
          return inTeam;
      }
+    public boolean isAlive(){
+        return health>0;
+    }
+     //method for leaving team after fight
      public void leaveTeam (){
          inTeam  = false;
          teamIdx=null;
      }
+     //joining team
     public void joinTeam (int idx){
         teamIdx=idx;
         inTeam=true;
@@ -39,22 +50,11 @@ public abstract class Droid {
 
         this.defendDamage=defendDamage;
     };
-     public float getDamage (){
-        return damage;
-    }
-    public boolean isAlive(){
-        return health>0;
-    }
 
-     public float getReloadTime() {
-         return reloadTime;
-     }
 
 
 
     abstract void  useAbility ();
-
-
 
 
 

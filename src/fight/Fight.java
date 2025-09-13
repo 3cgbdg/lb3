@@ -2,7 +2,7 @@ package fight;
 
 import droids.Droid;
 import team.Team;
-
+//abstracts for Fights
 public abstract class Fight {
      Team team1;
      Team team2;
