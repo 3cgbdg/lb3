@@ -20,7 +20,6 @@ public class TeamsFight extends Fight{
             turn = (int)(Math.random()*2);
              randIdxTeam1 = (int)(Math.random()* team1.getDroids().size());
              randIdxTeam2 = (int)(Math.random()* team2.getDroids().size());
-            System.out.println(randIdxTeam1+"" + randIdxTeam2);
 
             Droid activeDroid1= team1.getDroids().get(randIdxTeam1);
             Droid activeDroid2 = team2.getDroids().get(randIdxTeam2);

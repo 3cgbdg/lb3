@@ -18,7 +18,8 @@ public class MedicDroid extends Droid implements Healer {
             List<Droid> team = Game.getTeams()[teamIdx].getDroids();
             int randIdx = (int)(Math.random() * (team.size()-1));
             team.get(randIdx).health +=500;
-        System.out.format("Used ability '%s'\n",abilityName);
+            System.out.format("%s Used ability '%s'\n",name,abilityName);
+
         }
     }
 

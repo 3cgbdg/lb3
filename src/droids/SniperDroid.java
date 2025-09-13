@@ -13,7 +13,8 @@ public class SniperDroid extends Droid implements Fighter {
         double randomNum = Math.random();
         if(randomNum>= 0.90f){
             damage = 175f;
-        System.out.format("Used ability '%s'\n",abilityName);
+            System.out.format("%s Used ability '%s'\n",name,abilityName);
+
         }
     }
      public void fight(Droid droid){

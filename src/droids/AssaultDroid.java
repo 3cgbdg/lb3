@@ -15,7 +15,7 @@ public class AssaultDroid extends Droid implements Fighter {
     void useAbility() {
         if(health < 180){
         damage*= 1.5f;
-        System.out.format("Used ability '%s'\n",abilityName);
+        System.out.format("%s Used ability '%s'\n",name,abilityName);
         }
     }
     public void fight(Droid droid){
