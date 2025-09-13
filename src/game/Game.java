@@ -18,6 +18,14 @@ public class Game {
     private static List <Droid> droids = new ArrayList<>();
     private static Team[] teams = {new Team(),new Team()};
     public static void createDroid(String name, String type){
+        boolean isTakenName = false;
+        for(Droid dr :droids){
+            if(Objects.equals(dr.getName(), name)){
+                System.out.println("Name is already taken!");
+                isTakenName=true;
+            }
+         }
+        if(isTakenName) return;
         switch (type){
             case "Assault":
                 droids.add(new AssaultDroid(name));
@@ -27,6 +35,9 @@ public class Game {
                 break;
             case "Medic":
                 droids.add(new MedicDroid(name));
+                break;
+            default:
+                System.out.println("There`s no such type of droid!");
                 break;
         }
 
