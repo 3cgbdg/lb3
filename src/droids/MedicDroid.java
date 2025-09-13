@@ -16,14 +16,16 @@ public class MedicDroid extends Droid implements Healer {
         double randomNum = Math.random();
         if(randomNum>= 0.90f){
             List<Droid> team = Game.getTeams()[teamIdx].getDroids();
-            int randIdx = (int)(Math.random() * team.size());
+            int randIdx = (int)(Math.random() * (team.size()-1));
             team.get(randIdx).health +=500;
         System.out.format("Used ability '%s'\n",abilityName);
         }
     }
 
-    public void heal(Droid droid){
+    public void heal(){
+        List<Droid> team = Game.getTeams()[teamIdx].getDroids();
+        int randIdx = (int)(Math.random() * (team.size()-1));
         useAbility();
-        droid.health+=99;
+        team.get(randIdx).health +=50;
     }
 }

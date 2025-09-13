@@ -89,30 +89,37 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         int teamIdx = 0;
         int count = 0;
-        while (!Objects.equals(name, "exit")){
+        while (!Objects.equals(name, "next")){
             if(count == droids.size() || (option==1 && count==2))break;
-            System.out.printf("Write name of droid to team %d (to exit type 'exit'):",teamIdx+1);
+            System.out.printf("Write name of droid to team %d (to exit type 'next'):",teamIdx+1);
             name = sc.nextLine();
             int mergedIdx = option==2 ? droids.size()/2:1;
+            boolean isRealName = false;
            for(Droid dr:droids){
                 if(Objects.equals(name, dr.getName())){
                     if(dr.isInTeam()){
                         System.out.println("It`s in team already");
                         break;
                     }
-                    if(dr instanceof Healer){
-                        if(Arrays.stream(teams[teamIdx].getDroids().toArray()).anyMatch(n ->n instanceof Healer));
-                        System.out.println("You already have one medic in your team (max:1)");
-                        break;
+                    if(dr instanceof Healer && (!teams[0].getDroids().isEmpty() || !teams[1].getDroids().isEmpty())){
+                        boolean hasHealer = Arrays.stream(teams[teamIdx].getDroids().toArray()).anyMatch(n ->n instanceof Healer);
+                        if(hasHealer){
+                            System.out.println("You already have one medic in your team (max:1)");
+                            break;
+                        }
+
                     }
                     dr.joinTeam(teamIdx);
                     teams[teamIdx].addToTeam(dr);
+                    count++;
+                    isRealName=true;
                     break;
 
                 }
             }
             if(teams[0].getSize() == mergedIdx)teamIdx=1;
-            count++;
+            if(!isRealName && !Objects.equals(name, "next")) System.out.println("Incorrect droid`s name!");
+
         }
     }
 

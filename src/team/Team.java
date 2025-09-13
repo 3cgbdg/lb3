@@ -28,7 +28,7 @@ public class Team {
     }
 
     public int getSize (){
-        return getDroids().size();
+        return getDroids()!=null ? getDroids().size() : 0;
     }
 
     public void clearTeam(){

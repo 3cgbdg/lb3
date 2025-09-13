@@ -20,6 +20,8 @@ public class TeamsFight extends Fight{
             turn = (int)(Math.random()*2);
              randIdxTeam1 = (int)(Math.random()* team1.getDroids().size());
              randIdxTeam2 = (int)(Math.random()* team2.getDroids().size());
+            System.out.println(randIdxTeam1+"" + randIdxTeam2);
+
             Droid activeDroid1= team1.getDroids().get(randIdxTeam1);
             Droid activeDroid2 = team2.getDroids().get(randIdxTeam2);
             if(turn == 0 ){
@@ -27,7 +29,7 @@ public class TeamsFight extends Fight{
                     activeDroid1= team1.getDroids().get((int)(Math.random()* team1.getDroids().size()));
                 }
                 if(activeDroid1 instanceof Healer healer){
-                    healer.heal(activeDroid2);
+                    healer.heal();
 
                 }
                 if(activeDroid1 instanceof Fighter fighter){
@@ -35,16 +37,15 @@ public class TeamsFight extends Fight{
 
                 }
             }else{
-                while(!activeDroid1.isAlive()){
+                while(!activeDroid2.isAlive()){
                     activeDroid2= team2.getDroids().get((int)(Math.random()* team2.getDroids().size()));
                 }
-                if(activeDroid1 instanceof Healer healer){
-                    healer.heal(activeDroid2);
+                if(activeDroid2 instanceof Healer healer){
+                    healer.heal();
 
                 }
-                if(activeDroid1 instanceof Fighter fighter){
-                    fighter.fight(activeDroid2);
-
+                if(activeDroid2 instanceof Fighter fighter){
+                    fighter.fight(activeDroid1);
                 }
 
             }
